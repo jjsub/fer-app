@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import logo from './ferFace.png';
 import './App.css';
-import './respuestasList.js'
+import './respuestasList.js';
+import TestsLogs from './tests.js';
+
 
 class App extends Component {
   constructor (props) {
     super(props);
+    console.log(this.props)
     this.state = {
       text:'',
-      number: null
+      number: null,
+      logs:[]
     };
     this.lista = [{id: '123', text: 'You are my papa'},
-                  {id: '123', text: 'You are my papa'}];
+                  {id: '1235', text: 'You are my papa'}];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleNumberChange = this.handleNumberChange.bind(this);
@@ -49,11 +53,18 @@ class App extends Component {
           </form>
         </div>
         <div>
-          <respuestasList items={this.lista} />
+          <TestsLogs items={this.lista} />
         </div>
       </div>
     );
   }
+}
+
+
+App.propTypes = {
+  // You can declare that a prop is a specific JS primitive. By default, these
+  // are all optional.
+  items: React.PropTypes.array
 }
 
 export default App;
