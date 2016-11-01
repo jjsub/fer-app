@@ -33,9 +33,14 @@ class App extends Component {
     evt.preventDefault();
     let newItem = {
       text: this.state.text,
+      number: this.state.number,
       id: Date.now()
     };
-    this.setState({text: ''})
+    this.setState((prevState) => ({
+      logs: prevState.logs.concat(newItem),
+      text: '',
+      number: null
+    }));
   }
 
   render() {
@@ -43,17 +48,17 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to The Fern App for massages</h2>
+          <h2>Welcome to The Fern App for messages</h2>
         </div>
         <div>
-          <form className="uspstf-form" onSubmit={this.handleSubmit}>
-            <input type="number" onChange={this.handleNumberChange} placeholder="El numero de   📞"></input>
+          <form className="form" onSubmit={this.handleSubmit}>
+            <input type="text" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
             <input type="text" onChange={this.handleTextChange} placeholder="Tu msg favorito    🤖" value={this.state.text}></input>
             <input type="submit" value="Send"></input>
           </form>
         </div>
         <div>
-          <TestsLogs items={this.lista} />
+          <TestsLogs items={this.state.logs} />
         </div>
       </div>
     );

@@ -5,7 +5,7 @@ export default class TestsLogs extends React.Component {
     return (
       <ul>
         {this.props.items.map((item, i) => (
-          <li key={item.id}>{item.text} {i}</li>
+          <li key={item.id}>{item.text} {item.number} {i}</li>
         ))}
       </ul>
     );
