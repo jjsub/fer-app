@@ -3,6 +3,8 @@ import logo from './ferFace.png';
 import './App.css';
 import './respuestasList.js';
 import TestsLogs from './tests.js';
+// import 'skeleton-css';
+import './css/skeleton.css'
 
 
 class App extends Component {
@@ -48,13 +50,13 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to The Fern App for messages</h2>
+          <h3>Welcome to The Fern App for messages</h3>
         </div>
         <div>
           <form className="form" onSubmit={this.handleSubmit}>
-            <div>
+            <div className="six columns">
               <label> Tel </label>
-              <input type="number" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+              <input type="number" className="u-full-width" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
             </div>
           <div>
             <label> Text </label>
@@ -82,4 +84,4 @@ export default App;
 
 //To-do:
 
-// Creat custom input component 
+// Creat custom input component
