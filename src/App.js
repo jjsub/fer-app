@@ -11,7 +11,7 @@ class App extends Component {
     console.log(this.props)
     this.state = {
       text:'',
-      number: null,
+      number: '',
       logs:[]
     };
     this.lista = [{id: '123', text: 'You are my papa'},
@@ -39,7 +39,7 @@ class App extends Component {
     this.setState((prevState) => ({
       logs: prevState.logs.concat(newItem),
       text: '',
-      number: null
+      number: ''
     }));
   }
 
@@ -52,7 +52,7 @@ class App extends Component {
         </div>
         <div>
           <form className="form" onSubmit={this.handleSubmit}>
-            <input type="text" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+            <input type="number" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
             <input type="text" onChange={this.handleTextChange} placeholder="Tu msg favorito    🤖" value={this.state.text}></input>
             <input type="submit" value="Send"></input>
           </form>
