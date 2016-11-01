@@ -16,8 +16,7 @@ class App extends Component {
       number: '',
       logs:[]
     };
-    this.lista = [{id: '123', text: 'You are my papa'},
-                  {id: '1235', text: 'You are my papa'}];
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleNumberChange = this.handleNumberChange.bind(this);
@@ -70,7 +69,7 @@ class App extends Component {
           </form>
         </div>
         <div className='container'>
-          <TestsLogs items={this.state.logs} />
+          {this.state.logs.length > 0 && <TestsLogs items={this.state.logs} />}
         </div>
       </div>
     );
