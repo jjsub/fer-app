@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -16,6 +16,29 @@
 
 .App-intro {
   font-size: large;
+}
+
+.input-text {
+  font-size:14pt;
+}
+
+.textTarea-box {
+  margin: 0px 0px 15px;
+  width: 606px;
+  height: 175px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.head-title {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.img-logo-fer {
+  margin-left: 50%;
 }
 
 @keyframes App-logo-spin {

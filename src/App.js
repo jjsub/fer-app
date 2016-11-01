@@ -47,25 +47,29 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App ">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h3>Welcome to The Fern App for messages</h3>
+          <img src={logo} className="App-logo img-logo-fer" alt="logo" />
+          <h3 className="head-title">Welcome to The Fern App for messages</h3>
         </div>
-        <div>
+        <div className='container'>
           <form className="form" onSubmit={this.handleSubmit}>
-            <div className="six columns">
-              <label> Tel </label>
-              <input type="number" className="u-full-width" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+            <div className="row" style={{marginTop: 2 +'rem'}}>
+              <div className="">
+                <label> Tel </label>
+                <input type="number" className="input-text" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+              </div>
+          </div>
+          <div className="row">
+            <div className="">
+              <label> Text </label>
+              <textarea type="text" className="input-text textTarea-box" onChange={this.handleTextChange} placeholder="Tu msg favorito    🤖" value={this.state.text} />
             </div>
-          <div>
-            <label> Text </label>
-            <input type="text" onChange={this.handleTextChange} placeholder="Tu msg favorito    🤖" value={this.state.text}></input>
           </div>
             <input type="submit" value="Send"></input>
           </form>
         </div>
-        <div>
+        <div className='container'>
           <TestsLogs items={this.state.logs} />
         </div>
       </div>
