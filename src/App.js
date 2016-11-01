@@ -52,8 +52,14 @@ class App extends Component {
         </div>
         <div>
           <form className="form" onSubmit={this.handleSubmit}>
-            <input type="number" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+            <div>
+              <label> Tel </label>
+              <input type="number" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+            </div>
+          <div>
+            <label> Text </label>
             <input type="text" onChange={this.handleTextChange} placeholder="Tu msg favorito    🤖" value={this.state.text}></input>
+          </div>
             <input type="submit" value="Send"></input>
           </form>
         </div>
@@ -73,3 +79,7 @@ App.propTypes = {
 }
 
 export default App;
+
+//To-do:
+
+// Creat custom input component 
