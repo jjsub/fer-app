@@ -44,21 +44,20 @@ class App extends Component {
       number: ''
     }));
 
-    axios.get('https://glacial-plateau-98876.herokuapp.com/', {
-      "to": "6158286010",
-      "body": "Hola amigo"
-  },
-  {
-'Access-Control-Allow-Origin': '*',
-'Content-Type': 'application/json'
-}
-)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    axios.post('https://glacial-plateau-98876.herokuapp.com/sms',
+          {
+            "to": "6158286010",
+            "body": "Hola amigo"
+          },
+          {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+          }
+        ).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          console.log(error);
+        });
   //   axios({
   //     method: 'POST',
   //     url: 'https://glacial-plateau-98876.herokuapp.com/',
