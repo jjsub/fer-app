@@ -5,6 +5,7 @@ import './respuestasList.js';
 import TestsLogs from './tests.js';
 // import 'skeleton-css';
 import './css/skeleton.css'
+var axios = require('axios');
 
 
 class App extends Component {
@@ -42,6 +43,53 @@ class App extends Component {
       text: '',
       number: ''
     }));
+
+    axios.get('https://glacial-plateau-98876.herokuapp.com/', {
+      "to": "6158286010",
+      "body": "Hola amigo"
+  },
+  {
+'Access-Control-Allow-Origin': '*',
+'Content-Type': 'application/json'
+}
+)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  //   axios({
+  //     method: 'POST',
+  //     url: 'https://glacial-plateau-98876.herokuapp.com/',
+  //     data: {
+  //       "to": "6155094309",
+  //       "body": "Hola amigo"
+  //     },
+  //     headers:{ "Content-Type": "application/json"}
+  //   })
+  //   .then(function (response) {
+  //     response.writeHead(200, {
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Content-Type': 'application/json'
+  // });
+  //     console.log('Error ',response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log('catch ', error);
+  //   });
+
+    // var myRequest = new Request('https://glacial-plateau-98876.herokuapp.com/sms', {method: 'POST', mode: 'no-cors'});
+    // console.log(myRequest, {body: '{"to":"6155094309", "body":"Hello"}'})
+    // fetch(myRequest, )
+    //   .then(function(response) {
+    //       if(response.status == 200) return response.json();
+    //       else throw new Error('Something went wrong on api server!');
+    //   })
+    //   .then(function(response) {
+    //     console.debug(response);
+    //     // ...
+    // });
   }
 
   render() {
