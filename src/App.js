@@ -15,7 +15,8 @@ class App extends Component {
     this.state = {
       text:'',
       number: '',
-      logs:[]
+      logs:[],
+      statusColor: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,62 +34,47 @@ class App extends Component {
 
   handleSubmit (evt) {
     evt.preventDefault();
-    let newItem = {
-      text: this.state.text,
-      number: this.state.number,
-      id: Date.now()
-    };
-    this.setState((prevState) => ({
-      logs: prevState.logs.concat(newItem),
-      text: '',
-      number: ''
-    }));
+    let msgText = this.state.text;
+    let telNumber = this.state.number;
+    let tel = telNumber.toString()
 
     axios.post('https://glacial-plateau-98876.herokuapp.com/sms',
           {
-            "to": "6158286010",
-            "body": "Hola amigo"
+            "to": telNumber.toString(),
+            "body": msgText
           },
           {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
           }
-        ).then(function (response) {
+        ).then((response) => {
           console.log(response);
-        }).catch(function (error) {
+          let newItem = {
+            text: msgText,
+            number: telNumber,
+            date: response.data.date_sent,
+            id: response.data.date_sent,
+            status: response.data.status,
+          };
+          this.setState((prevState) => ({
+            logs: prevState.logs.concat(newItem),
+            text: '',
+            number: '',
+            statusColor: true
+          }));
+        }).catch((error) => {
           console.log(error);
-        });
-  //   axios({
-  //     method: 'POST',
-  //     url: 'https://glacial-plateau-98876.herokuapp.com/',
-  //     data: {
-  //       "to": "6155094309",
-  //       "body": "Hola amigo"
-  //     },
-  //     headers:{ "Content-Type": "application/json"}
-  //   })
-  //   .then(function (response) {
-  //     response.writeHead(200, {
-  //   'Access-Control-Allow-Origin': '*',
-  //   'Content-Type': 'application/json'
-  // });
-  //     console.log('Error ',response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log('catch ', error);
-  //   });
-
-    // var myRequest = new Request('https://glacial-plateau-98876.herokuapp.com/sms', {method: 'POST', mode: 'no-cors'});
-    // console.log(myRequest, {body: '{"to":"6155094309", "body":"Hello"}'})
-    // fetch(myRequest, )
-    //   .then(function(response) {
-    //       if(response.status == 200) return response.json();
-    //       else throw new Error('Something went wrong on api server!');
-    //   })
-    //   .then(function(response) {
-    //     console.debug(response);
-    //     // ...
-    // });
+          let newItemError = {
+              id: Date.now(),
+              status: 'Not a valid or register number'
+          }
+          this.setState((prevState) => ({
+            logs: prevState.logs.concat(newItemError  ),
+            text: '',
+            number: '',
+            statusColor: false
+          }));
+      });
   }
 
   render() {
@@ -103,13 +89,13 @@ class App extends Component {
             <div className="row" style={{marginTop: 2 +'rem'}}>
               <div className="">
                 <label> Tel </label>
-                <input type="number" className="input-text" onChange={this.handleNumberChange} placeholder="El numero de   📞" value={this.state.number}></input>
+                <input type="number" className="input-text" onChange={this.handleNumberChange} placeholder="El numero de  📞" value={this.state.number}></input>
               </div>
           </div>
           <div className="row">
             <div className="">
               <label> Text </label>
-              <textarea type="text" className="input-text textTarea-box" onChange={this.handleTextChange} placeholder="Tu msg favorito    🤖" value={this.state.text} />
+              <textarea type="text" className="input-text textTarea-box" onChange={this.handleTextChange} placeholder="Tu msg favorito  🤖" value={this.state.text} />
             </div>
           </div>
             <input type="submit" value="Send"></input>
