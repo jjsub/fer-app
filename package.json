@@ -2,7 +2,7 @@
   "name": "fer-app",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://http://juanjob.info/fer-app",
+  "homepage": "http://juanjob.info/fer-app",
   "devDependencies": {
     "gh-pages": "^0.11.0",
     "react-scripts": "0.7.0"
