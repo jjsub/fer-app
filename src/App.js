@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import logo from './ferFace.png';
 import './App.css';
@@ -44,7 +46,7 @@ class App extends Component {
             "body": msgText
           },
           {
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'ha',
             'Content-Type': 'application/json'
           }
         ).then((response) => {
